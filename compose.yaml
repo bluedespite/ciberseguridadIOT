@@ -1,0 +1,21 @@
+services:
+  scanner:
+    build: ./scanner
+    container_name: iot-lab-scanner
+    networks:
+      - labnet
+    stdin_open: true
+    tty: true
+    # No host ports are published. The network is isolated below.
+
+  target:
+    build: ./target
+    container_name: iot-lab-target
+    networks:
+      - labnet
+    # SSH is available only to containers on labnet; not published to the host.
+
+networks:
+  labnet:
+    name: iot-lab-internal
+    internal: true

@@ -1,0 +1,98 @@
+GUÍA RÁPIDA: DESCARGAR EL LABORATORIO IoT CON GIT
+================================================
+
+IMPORTANTE
+----------
+Antes de ejecutar git clone, reemplaza URL_DEL_REPOSITORIO por la URL real
+que aparece en el botón Code de tu repositorio de GitHub. Ejemplo de formato:
+https://github.com/bluedespite/ciberseguridadIOT.git
+
+1. INSTALAR GIT
+---------------
+
+Arch Linux:
+    sudo pacman -S git
+
+Ubuntu / Ubuntu en WSL:
+    sudo apt update
+    sudo apt install git
+
+Comprobar la instalación:
+    git --version
+
+2. CONFIGURAR EL NOMBRE Y CORREO DE GIT (OPCIONAL PARA CLONAR)
+--------------------------------------------------------------
+Esta configuración identifica tus commits. No es una contraseña y no es
+necesaria para descargar un repositorio público; sí conviene configurarla
+si después vas a realizar commits.
+
+    git config --global user.name "Tu Nombre"
+    git config --global user.email "tu-correo@example.com"
+
+Comprobar la configuración:
+    git config --global --list
+
+Usa el correo que quieras asociar a tus commits. Si prefieres proteger tu
+correo personal en GitHub, puedes utilizar la dirección noreply que GitHub
+te muestra en la configuración de tu cuenta.
+
+3. DESCARGAR (CLONAR) LA PRÁCTICA
+---------------------------------
+Ve a la carpeta donde quieres guardar el proyecto. Por ejemplo:
+
+    cd ~/Descargas
+
+Clona el repositorio usando su URL real:
+
+    git clone URL_DEL_REPOSITORIO
+
+Ejemplo de formato (NO es una dirección real):
+
+    git clone https://github.com/bluedespite/ciberseguridadIOT.git
+
+Entra en la carpeta descargada:
+
+    cd lab-iot-podman-wsl
+
+Los nombres de la carpeta y del repositorio pueden diferir; usa el nombre
+que Git muestre al terminar la clonación.
+
+4. ¿GIT PIDE USUARIO Y CONTRASEÑA?
+----------------------------------
+- Repositorio público por HTTPS: normalmente no necesitas iniciar sesión ni
+  introducir contraseña para clonarlo.
+- Repositorio privado: necesitarás autenticarte con una cuenta que tenga
+  permisos para acceder.
+- GitHub no acepta la contraseña normal de la cuenta para operaciones Git
+  por HTTPS. Si solicita autenticación, usa un método compatible, como un
+  token personal de acceso (PAT) o SSH.
+- No escribas ni guardes un token dentro de este archivo, del repositorio,
+  ni en comandos que puedan quedar registrados en el historial de la shell.
+
+Configurar user.name y user.email NO autentica tu cuenta ni sustituye un
+ token o una clave SSH.
+
+5. OPCIÓN SSH (SI YA CONFIGURASTE UNA CLAVE EN GITHUB)
+-----------------------------------------------------
+Si tu clave SSH ya está añadida a tu cuenta de GitHub, usa la URL SSH que
+muestra el botón Code. Su formato es:
+
+    git clone git@github.com:USUARIO/REPOSITORIO.git
+
+Si todavía no configuraste una clave SSH, para una descarga pública es más
+sencillo usar la URL HTTPS.
+
+6. COMPROBAR EL CONTENIDO DESCARGADO
+------------------------------------
+Desde la carpeta del proyecto:
+
+    ls -la
+    find . -maxdepth 3 -type f
+
+Después puedes seguir las instrucciones del README.md para construir y
+levantar el laboratorio con Podman Compose.
+
+NOTA DE SEGURIDAD
+-----------------
+Este proyecto es un laboratorio didáctico. Ejecuta las pruebas solo contra
+los contenedores del laboratorio y conserva el aislamiento de red previsto.
