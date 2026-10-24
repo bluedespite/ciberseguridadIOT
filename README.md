@@ -39,7 +39,7 @@ podman-compose ps
 ## 3. Práctica A: descubrimiento de servicio
 
 ```bash
-podman-compose run --rm scanner nmap --unpriviliged -sT -sV -p 22 target
+podman-compose run --rm scanner nmap --unprivileged -sT -sV -p 22 target
 ```
 
 Resultado esperado: puerto 22/tcp abierto y servicio OpenSSH identificado.
@@ -50,7 +50,7 @@ La lista tiene solo tres contraseñas ficticias y el usuario es `iotlab`.
 El script NSE `ssh-brute` probará únicamente esas entradas contra el contenedor `target`:
 
 ```bash
-podman-compose run --rm scanner nmap --unpriviliged -sT -p 22 \
+podman-compose run --rm scanner nmap --unprivileged -sT -p 22 \
   --script ssh-brute \
   --script-args userdb=/lab/users.txt,passdb=/lab/passwords.txt \
   target
